@@ -23,15 +23,3 @@ pip install -r requirements.txt
 ```bash
 python3 main.py
 ```
-
-```bash
-sudo mysql -u root -p
-sudo mysql -e "CREATE USER 'hackernews_st'@'localhost' IDENTIFIED BY 'hackernews_st';"
-sudo mysql -e "GRANT ALL PRIVILEGES ON hackernews_st.* TO 'hackernews_st'@'localhost';"
-sudo mysql -e "FLUSH PRIVILEGES;"
-sudo mysql -e "CREATE DATABASE hackernews_st;"
-```
-
-```bash
-python3 db.py
-```

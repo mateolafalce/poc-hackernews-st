@@ -35,11 +35,11 @@ curl -X GET "https://api.openai.com/v1/videos/$VIDEO_ID/content" \
 if [ $? -eq 0 ]; then
     FILE_SIZE=$(du -h "../articles_html/$OUTPUT_FILE" | cut -f1)
     echo ""
-    echo "✓ Video downloaded successfully!"
+    echo " Video downloaded successfully!"
     echo "  File: ../articles_html/$OUTPUT_FILE"
     echo "  Size: $FILE_SIZE"
 else
     echo ""
-    echo "✗ Error downloading video"
+    echo " Error downloading video"
     exit 1
 fi

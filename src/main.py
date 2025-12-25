@@ -1,25 +1,12 @@
 import os
 import json
 from datetime import datetime
-from article import get_top_story
 from yt_content import make_yt_content
 from cinema import make_yt_cinema
 from sora import make_yt_video
 
 
 def main():
-    # get some good article from hacker news
-    # using an euristic algorithm
-    #article = get_top_story()
-
-    # Load article content from SOURCE.md
-    source_path = os.path.join(os.path.dirname(__file__), '..', 'articles_html', 'SOURCE.md')
-    with open(source_path, 'r', encoding='utf-8') as f:
-        article = f.read()
-    
-    # make some content for youtube
-    yt_content = make_yt_content(article)
-    
     # Save the LLM response to articles_html as JSON
     if yt_content:
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
