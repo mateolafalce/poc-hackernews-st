@@ -1,3 +1,5 @@
+# TODO: Figure out the edge cases
+
 import requests
 from db import article_exists
 

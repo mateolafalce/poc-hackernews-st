@@ -1,4 +1,5 @@
 import os
+import json
 from datetime import datetime
 from article import get_top_story
 from yt_content import make_yt_content
@@ -12,25 +13,26 @@ def main():
     #article = get_top_story()
 
     # Load article content from SOURCE.md
-    #source_path = os.path.join(os.path.dirname(__file__), '..', 'articles_html', 'SOURCE.md')
-    #with open(source_path, 'r', encoding='utf-8') as f:
-    #    article = f.read()
+    source_path = os.path.join(os.path.dirname(__file__), '..', 'articles_html', 'SOURCE.md')
+    with open(source_path, 'r', encoding='utf-8') as f:
+        article = f.read()
     
     # make some content for youtube
-    #yt_content = make_yt_content(article)
+    yt_content = make_yt_content(article)
     
-    # Save the LLM response to articles_html
-    #if yt_content:
-    #    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    #    output_path = os.path.join(os.path.dirname(__file__), '..', 'articles_html', f'yt_script_{timestamp}.txt')
-    #    with open(output_path, 'w', encoding='utf-8') as f:
-    #        f.write(yt_content)
-    #    print(f"\nScript guardado en: {output_path}")
+    # Save the LLM response to articles_html as JSON
+    if yt_content:
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        output_path = os.path.join(os.path.dirname(__file__), '..', 'articles_html', f'yt_script_{timestamp}.json')
+        with open(output_path, 'w', encoding='utf-8') as f:
+            # Parse the JSON string and save it with proper formatting
+            json_data = json.loads(yt_content)
+            json.dump(json_data, f, ensure_ascii=False, indent=2)
 
     # Load the YouTube script from content.txt
-    #content_path = os.path.join(os.path.dirname(__file__), '..', 'articles_html', 'content.txt')
-    #with open(content_path, 'r', encoding='utf-8') as f:
-    #    yt_script = f.read()
+    content_path = os.path.join(os.path.dirname(__file__), '..', 'articles_html', 'yt_script.json')
+    with open(content_path, 'r', encoding='utf-8') as f:
+        yt_script = json.load(f)
     
 
 
